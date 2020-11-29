@@ -55,41 +55,43 @@ public:
 template<typename T_SPISPEED> class TwoWireSpiImple
 {
 public:
+	SPIClass * SPI = NULL;
     TwoWireSpiImple(uint8_t, uint8_t) // clock and data pins ignored for hardware SPI
     {
+			SPI = new SPIClass(VSPI);
     }
 
     ~TwoWireSpiImple()
     {
-        SPI.end();
+        SPI->end();
     }
 
 #if defined(ARDUINO_ARCH_ESP32)
     // for cases where hardware SPI can have pins changed
     void begin(int8_t sck, int8_t miso, int8_t mosi, int8_t ss)
     {
-        SPI.begin(sck, miso, mosi, ss);
+        SPI->begin(sck, miso, mosi, ss);
     }
 #endif
 
     void begin()
     {
-        SPI.begin();
+        SPI->begin();
     }
 
     void beginTransaction()
     {
-        SPI.beginTransaction(SPISettings(T_SPISPEED::Clock, MSBFIRST, SPI_MODE0));
+        SPI->beginTransaction(SPISettings(T_SPISPEED::Clock, MSBFIRST, SPI_MODE0));
     }
 
     void endTransaction()
     {
-        SPI.endTransaction();
+        SPI->endTransaction();
     }
 
     void transmitByte(uint8_t data)
     {
-        SPI.transfer(data);
+        SPI->transfer(data);
     }
 
     void transmitBytes(const uint8_t* data, size_t dataSize)
@@ -98,7 +100,7 @@ public:
         // ESPs have a method to write without inplace overwriting the send buffer
         // since we don't care what gets received, use it for performance
         // FIX: but for what ever reason on Esp32, its not const
-        SPI.writeBytes(const_cast<uint8_t*>(data), dataSize);
+        SPI->writeBytes(const_cast<uint8_t*>(data), dataSize);
 
 #else
         // default ARDUINO transfer inplace overwrites the send buffer
@@ -106,7 +108,7 @@ public:
         const uint8_t* endData = data + dataSize;
         while (data < endData)
         {
-            SPI.transfer(*data++);
+            SPI->transfer(*data++);
         }
 #endif
     }
