@@ -28,41 +28,41 @@ License along with NeoPixel.  If not, see
 
 #include <SPI.h>
 
-class SpiSpeed40Mhz
+class SpiSpeed40Mhz2
 {
 public:
     static const uint32_t Clock = 40000000L;
 };
 
-class SpiSpeed20Mhz
+class SpiSpeed20Mhz2
 {
 public:
     static const uint32_t Clock = 20000000L;
 };
 
-class SpiSpeed10Mhz
+class SpiSpeed10Mhz2
 {
 public:
     static const uint32_t Clock = 10000000L;
 };
 
-class SpiSpeed2Mhz
+class SpiSpeed2Mhz2
 {
 public:
     static const uint32_t Clock = 2000000L;
 };
 
-template<typename T_SPISPEED> class TwoWireSpiImple
+template<typename T_SPISPEED> class TwoWireSpiImple2
 {
 public:
 	SPIClass * SPI = NULL;
-    TwoWireSpiImple(uint8_t, uint8_t) // clock and data pins ignored for hardware SPI
+    TwoWireSpiImple2(uint8_t, uint8_t) // clock and data pins ignored for hardware SPI
     {
-			SPI = new SPIClass(VSPI);
+			SPI = new SPIClass(HSPI);
 
     }
 
-    ~TwoWireSpiImple()
+    ~TwoWireSpiImple2()
     {
         SPI->end();
     }
