@@ -126,12 +126,14 @@ typedef DotStarMethodBase<TwoWireBitBangImple> DotStarMethod;
 #include "TwoWireSpiImple.h"
 #include "TwoWireSpiImple2.h"
 typedef DotStarMethodBase<TwoWireSpiImple<SpiSpeed40Mhz>> DotStarSpi40MhzMethod;
+typedef DotStarMethodBase<TwoWireSpiImple<SpiSpeed40Mhz>> DotStarSpi40MhzMethod;
+typedef DotStarMethodBase<TwoWireSpiImple<SpiSpeed30Mhz>> DotStarSpi30MhzMethod;
 typedef DotStarMethodBase<TwoWireSpiImple<SpiSpeed20Mhz>> DotStarSpi20MhzMethod;
 typedef DotStarMethodBase<TwoWireSpiImple<SpiSpeed10Mhz>> DotStarSpi10MhzMethod;
 typedef DotStarMethodBase<TwoWireSpiImple<SpiSpeed2Mhz>> DotStarSpi2MhzMethod;
-typedef DotStarMethodBase<TwoWireSpiImple2<SpiSpeed10Mhz2>> DotStarSpi10MhzMethod2;
-typedef DotStarSpi10MhzMethod DotStarSpiMethod;
-typedef DotStarSpi10MhzMethod2 DotStarSpiMethod2;
+typedef DotStarMethodBase<TwoWireSpiImple2<SpiSpeed40Mhz2>> DotStarSpi40MhzMethod2;
+typedef DotStarSpi40MhzMethod DotStarSpiMethod;
+typedef DotStarSpi40MhzMethod2 DotStarSpiMethod2;
 #endif
 
 
