@@ -33,7 +33,11 @@ class SpiSpeed40Mhz2
 public:
     static const uint32_t Clock = 40000000L;
 };
-
+class SpiSpeed30Mhz2
+{
+public:
+    static const uint32_t Clock = 30000000L;
+};
 class SpiSpeed20Mhz2
 {
 public:
